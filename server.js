@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { v4: uuidv4 } = require('uuid');
 const mongoose = require('mongoose');
+const cors = require('cors');app.use(cors());
 
 // Connect to MongoDB (update with your connection string)
 mongoose.connect('mongodb://localhost:27017/accountCreation', { useNewUrlParser: true, useUnifiedTopology: true });
