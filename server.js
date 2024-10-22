@@ -18,6 +18,11 @@ const User = mongoose.model('User', UserSchema);
 const app = express();
 app.use(bodyParser.json());
 
+// Root route
+app.get('/', (req, res) => {
+    res.send('Welcome to the Account Creation API!'); // You can change this to serve HTML if needed
+});
+
 // Endpoint to create an account
 app.post('/api/create-account', async (req, res) => {
     const { walletAddress } = req.body;
