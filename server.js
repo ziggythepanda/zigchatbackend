@@ -1,41 +1,18 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { v4: uuidv4 } = require('uuid');
-const mongoose = require('mongoose');
-
-
-// Connect to MongoDB (update with your connection string)
-mongoose.connect('mongodb://localhost:27017/accountCreation', { useNewUrlParser: true, useUnifiedTopology: true });
-
-// Define a User model
-const UserSchema = new mongoose.Schema({
-    walletAddress: String,
-    uniqueIdentifier: String,
-    verified: { type: Boolean, default: false }
-});
-
-const User = mongoose.model('User', UserSchema);
 
 const app = express();
-app.use(cors());
-app.use(bodyParser.json());
+app.use(cors()); // Enable CORS
+app.use(bodyParser.json()); // Parse JSON request bodies
 
-// Root route
-app.get('/', (req, res) => {
-    res.send('Welcome to the Account Creation API!'); // You can change this to serve HTML if needed
-});
+// Endpoint to create a username
+app.post('/api/create-username', (req, res) => {
+    const { username } = req.body;
 
-// Endpoint to create an account
-app.post('/api/create-account', async (req, res) => {
-    const { walletAddress } = req.body;
-    const uniqueIdentifier = uuidv4();
+    // Here you could add logic to save the username to a database
 
-    const newUser = new User({ walletAddress, uniqueIdentifier });
-    await newUser.save();
-
-    // Send back the unique identifier to the frontend
-    res.json({ message: `Account created! Please send a transaction to inj1xlzmszxt4examxqqynmyjuwgvqrc0ahcy3l8dg with the memo: ${uniqueIdentifier}` });
+    res.json({ message: `Username "${username}" created successfully!` });
 });
 
 // Start the server
