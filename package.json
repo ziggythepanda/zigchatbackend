@@ -2,9 +2,9 @@
     "name": "your-app-name",
     "version": "1.0.0",
     "description": "A brief description of your app",
-    "main": "server.js", // or the main file for your backend
+    "main": "server.js", 
     "scripts": {
-      "start": "node server.js" // or the command to start your server
+      "start": "node server.js" 
     },
     "dependencies": {
       "express": "^4.17.1",
@@ -13,6 +13,6 @@
       "uuid": "^8.3.2"
     },
     "engines": {
-      "node": "14.x" // specify your Node.js version
+      "node": "14.x" 
     }
   }
